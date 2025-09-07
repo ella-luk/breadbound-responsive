@@ -185,7 +185,7 @@ function preload() {
   choosevanilla = loadImage('assets2/choosevanilla.png');
   plop = loadSound('assets2/plop.mp3')
   pudding = loadImage('assets2/pudding.png');
-  pie = loadImage('assets2/pie.png')
+  pie = loadImage('assets2/pie.png');
   cupcake = loadImage('assets2/cupcake.png');
   icecream = loadImage('assets2/icecream.png');
   choosetopping = loadImage('assets/choosetopping.png');
