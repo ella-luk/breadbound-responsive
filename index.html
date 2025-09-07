@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bread Bound</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- p5.js core + p5.sound for audio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+
+    <script src="sketch.js" defer></script>
+  </head>
+
+  <body>
+    <h1>Bread Bound</h1>
+    <div id="sketch"></div>
+
+    <!-- ADD: controls (button + volume slider) -->
+ <div class="controls">
+  <button id="toggle-sound">Play / Stop Music</button>
+  <label>Volume:
+    <input id="vol" type="range" min="0" max="1" step="0.01" value="0.5" />
+    <span id="volVal">0.50</span>
+    <button id="restart-btn">Restart Game</button>
+    <button id="new-dessert">New Dessert</button>
+  </label>
+  <label>Text Color:
+  <input id="text-color" type="color" value="#ffffff" />
+  </label>
+  <button id="help-btn">Key</button>
+</div>
+<div id="help-banner">
+  <p>Want to get a tailored rec?<br>
+    <hr>
+    Genres: <br>
+    Pudding (Romance) <br>
+    Pie (Fantasy/SciFi) <br>
+    Cupcake (Fiction) <br>
+    Icecream (Mystery/Thriller) <br>
+    <br>
+    Writing Styles: <br>
+    Matcha (Fast Paced) <br>
+    Chocolate (Cynical/Tongue in Cheek) <br>
+    Vanilla (Lyrical/Poetic) <br>
+    <br>
+    Mood: <br>
+    Sprinkles (Feed Good) <br>
+    Strawberries (Contemplative) <br>
+    Whipped Cream (Sad) <br>
+    <hr>
+    Click anywhere to close this banner</p>
+</div>
+  </body>
+
+</html>
+
