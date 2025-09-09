@@ -10,10 +10,10 @@ let scene4Started = false;
 let scene5Started = false;
 let scene6Started = false; 
 
-let sprinklesY = -0;         // Start above the screen
-let sprinklesTargetY = 300;    // Final landing Y position on the dessert
-let sprinklesFalling = false;  // Whether the animation is active
-let sprinklesVelocity = 10;     // Falling speed
+let sprinklesY = -0;        
+let sprinklesTargetY = 300;    
+let sprinklesFalling = false;  
+let sprinklesVelocity = 10;     
 
 let strawbY = -0;
 let strawbTargetY = 300; 
@@ -28,10 +28,10 @@ let whippedVelocity = 10;
 let lidY = 0;
 let lidLifting = false;
 let lidLifted = false;
-let lidLiftTarget = -610; // how high the lid will lift
+let lidLiftTarget = -610; 
 
-let dessertX = -500;  // Start offscreen to the left
-let targetX = 0;      // End position (on-screen)
+let dessertX = -500;  
+let targetX = 0;      
 let dessertSlideIn = false;
 
 let catSpeechPhrases = [
@@ -82,12 +82,11 @@ let phraseIndex = 0;
 let particles = [];
 let sound, bg, img, speech, font;
 let textColor = '#000000';
-let scene = "welcome"; // "welcome" or "next"
+let scene = "welcome"; 
 
 const DESIGN_WIDTH = 910;
 const DESIGN_HEIGHT = 650;
 
-// UI elements based on DESIGN_WIDTH and DESIGN_HEIGHT
 let btnX = 720;
 let btnY = 580;
 let btnW = 150;
@@ -330,18 +329,18 @@ function setup() {
   const helpBtn = document.getElementById('help-btn');
 const helpBanner = document.getElementById('help-banner');
 
-// Show/hide the banner when help button is clicked
+
 helpBtn.addEventListener('click', (e) => {
-  e.stopPropagation(); // prevent click from bubbling to body
+  e.stopPropagation(); 
   helpBanner.style.display = helpBanner.style.display === 'block' ? 'none' : 'block';
 });
 
-// Hide the banner when clicking anywhere else
+
 document.body.addEventListener('click', () => {
   helpBanner.style.display = 'none';
 });
 
-// Prevent clicking inside the banner from closing it
+
 helpBanner.addEventListener('click', (e) => {
   e.stopPropagation();
 });
@@ -385,7 +384,7 @@ class Sparkle {
 function draw() {
   background(255);
 
-  // Calculate scale and offsets for centering content
+
   const scaleX = width / DESIGN_WIDTH;
   const scaleY = height / DESIGN_HEIGHT;
   const scaleFactor = min(scaleX, scaleY);
@@ -397,7 +396,7 @@ function draw() {
   translate(offsetX, offsetY);
   scale(scaleFactor);
 
-  // Scale UI elements positions and sizes for hit detection and drawing
+ 
   const scaledBtnX = btnX;
   const scaledBtnY = btnY;
   const scaledBtnW = btnW;
@@ -479,7 +478,7 @@ function draw() {
 
     image(station1, 0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
 
-    // Show selected dessert image or hover previews
+  
     if (selectedDessert !== null) {
       if (selectedDessert === "pudding") {
         image(choosepudding, 0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
@@ -494,7 +493,7 @@ function draw() {
       textSize(14);
       textFont(font);
     } else {
-      // Hover previews for dessert selection
+      
       const mx = mouseXScaled();
       const my = mouseYScaled();
 
@@ -521,7 +520,7 @@ function draw() {
     text("hover over an option, then press to select!", DESIGN_WIDTH / 2, 100);
 
     if (showCatSpeech) {
-      // Cat speech bubble positioning
+      
       let catX = 0;
       let catY = 380;
       let catW = 250;
@@ -655,7 +654,7 @@ if (selectedDessert === "pudding") {
     text("back", backBtnX + backBtnW / 2, backBtnY + backBtnH / 2); 
 
     if (showCatFlavor) {
-      // Cat speech bubble positioning
+      
       let catX = 0;
       let catY = 380;
       let catW = 250;
@@ -706,7 +705,7 @@ if (selectedDessert === "pudding") {
       image(sprinkles, 340, sprinklesY, 240, 160);
       sprinklesY += sprinklesVelocity;
 
-      // Stop falling when reaching the target
+      
       if (sprinklesY >= sprinklesTargetY) {
       sprinklesY = sprinklesTargetY;
       sprinklesFalling = false;
@@ -738,7 +737,7 @@ if (selectedDessert === "pudding") {
       textFont(font);
     } 
     else {
-      // Hover previews for dessert selection
+      
       const mx = mouseXScaled();
       const my = mouseYScaled();
 
@@ -1181,10 +1180,10 @@ if (selectedDessert === "pudding") {
     }
 
   if (scene === 'scene6' && cardClicked) {
-  // Draw your reveal image
+
   image(cardopen, 0, 0, DESIGN_WIDTH, DESIGN_HEIGHT); // adjust position/size
 
-  // Draw text on top
+
   fill(50);
   textFont(font);
   textSize(24);
@@ -1292,7 +1291,7 @@ function mousePressed() {
     }
   } else if (scene === "scene3") {
   if (!showCatSpeech) {
-    // Dessert selection
+    
     if (pointInRect(mx, my, hoverArea)) {
       selectedDessert = "pudding";
       showCatSpeech = true;
@@ -1323,7 +1322,7 @@ function mousePressed() {
       scene3Started = true;
     }
   } else if (showCatSpeech) {
-  // Only respond to click on the continue button
+  
   if (showContinueBtn && pointInRect(mx, my, {x: btnX, y: btnY, width: btnW, height: btnH})) {
     if (!catSpeechComplete) {
       catSpeechIndex++;
@@ -1341,7 +1340,7 @@ function mousePressed() {
 }
 }  else if (scene === "scene4") {
   if (!showCatFlavor) {
-    // Selecting flavor
+  
     if (pointInRect(mx, my, hoverArea5)) {
       selectedFlavor = "matcha";
       showCatFlavor = true;
@@ -1365,7 +1364,7 @@ function mousePressed() {
       scene4Started = true;
     }
   } else {
-    // Continue button during flavor cat dialogue
+    
     if (showContinueBtn && pointInRect(mx, my, {x: btnX, y: btnY, width: btnW, height: btnH})) {
       if (!catFlavorComplete) {
         catFlavorIndex++;
@@ -1374,7 +1373,7 @@ function mousePressed() {
           catFlavorComplete = true;
         }
       } else {
-        // Only move to next scene after flavor dialogue is done
+       
         scene = "scene5";
         showContinueBtn = false;
 
@@ -1412,7 +1411,7 @@ function mousePressed() {
   catToppingComplete = false;
 }
 } else {
-    // Continue button during flavor cat dialogue
+    
     if (showContinueBtn && pointInRect(mx, my, {x: btnX, y: btnY, width: btnW, height: btnH})) {
       if (!catToppingComplete) {
         catToppingIndex++;
@@ -1421,7 +1420,7 @@ function mousePressed() {
           catToppingComplete = true;
         }
       } else {
-        // Only move to next scene after flavor dialogue is done
+        
         scene = "scene6";
         showContinueBtn = false;
 
@@ -1431,7 +1430,7 @@ function mousePressed() {
     }
   }
 } else if (scene === 'scene6' && !lidLifting && !lidLifted) {
-  // Adjust hitbox to the area of the lid (you can fine-tune this)
+  
   let lidHitbox = {
     x: 150,
     y: 150, 
@@ -1543,7 +1542,7 @@ function restartSketch() {
   cardClicked = false;
 }
 
-// Initial state variables
+
 let showContinueBtn = true;
 
 function handleBackButton() {
@@ -1567,7 +1566,7 @@ function handleBackButton() {
   }
   else if (scene === "scene5") {
     if (scene5Started) {
-      // Reset scene 5 to initial state
+      
       selectedTopping = null;
       sprinklesFalling = strawbFalling = whippedFalling = false;
       sprinklesY = strawbY = whippedY = -200;
@@ -1575,7 +1574,7 @@ function handleBackButton() {
       scene5Started = false;
       showCatTopping = false; 
     } else {
-      // Go back to scene4
+      
       scene = "scene4";
       scene5Started = false;
       selectedFlavor = null;
@@ -1590,7 +1589,7 @@ function handleBackButton() {
 
   else if (scene === "scene4") {
     if (scene4Started) {
-      // Reset scene 4 to initial state
+    
       selectedFlavor = null;
       showCatFlavor = false;
       catFlavorIndex = 0;
@@ -1610,7 +1609,6 @@ function handleBackButton() {
 
 else if (scene === "scene3") {
     if (scene3Started) {
-      // Reset scene 3 to initial state
       selectedDessert = null;
       showCatSpeech = false;
       catSpeechIndex = 0;
@@ -1628,13 +1626,13 @@ else if (scene === "scene3") {
 
  else if (scene === "next") {
   if (nextStarted) {
-    // Reset dialogue in "next" scene
+   
     scene2Index = 0;
     scene2Text = scene2Phrases[0];
     nextStarted = false; // Reset for next time
     showContinueBtn = true;
   } else {
-    // Go back to previous scene
+
     scene = "welcome";
     welcomeStarted = false;
     phraseIndex = 0;
