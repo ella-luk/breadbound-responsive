@@ -1562,6 +1562,8 @@ function handleBackButton() {
       sprinklesY = strawbY = whippedY = -200;
       showContinueBtn = false;
       showCatTopping = false; 
+      dessertX = -500;
+      dessertSlideIn = true;
     }
   }
   else if (scene === "scene5") {
